@@ -65,7 +65,6 @@ public class GameTests {
         for (int i = 0; i < 3; i++) {
             game.board[i] = game.symbol;
         }
-
         int result = game.evaluatePosition(game.board, game.player1);
         assertEquals(Game.INF, result);
         result = game.evaluatePosition(game.board, game.player2);
