@@ -23,13 +23,13 @@ public class GameTests {
     }
 
     @Test
-    public void testCheckState() {
+    public void TestCheckState() {
         State state = game.checkState(game.board);
         assertEquals(State.PLAYING, state);
     }
 
     @Test
-    public void testCheckStateXWin() {
+    public void TestCheckStateXWin() {
         game.symbol = 'X';
         char[] field = {'X', 'X', 'X', 'O', 'O', ' ', ' ', ' '};
         State state = game.checkState(field);
@@ -37,7 +37,7 @@ public class GameTests {
     }
 
     @Test
-    public void testCheckStateOWin() {
+    public void TestCheckStateOWin() {
         game.symbol = 'O';
         char[] field = {'O', 'O', 'O', 'X', 'X', ' ', 'X', 'X', ' '};
         State state = game.checkState(field);
@@ -45,22 +45,15 @@ public class GameTests {
     }
 
     @Test
-    public void testCheckStateDraw() {
+    public void TestEvaluatePositionDraw() {
         game.symbol = 'X';
-        char[] field = {'X', 'X', 'O', 'O', 'O', 'X', 'O', 'X', 'O'};
-        State state = game.checkState(field);
-        assertEquals(State.DRAW, state);
+        game.board = new char[] {'X', 'X', 'O', 'O', 'O', 'X', 'O', 'X', 'O'};
+        int result = game.evaluatePosition(game.board, game.player1);
+        assertEquals(0, result);
     }
 
     @Test
-    public void testGenerateMoves() {
-        ArrayList<Integer> moves = new ArrayList<>();
-        game.generateMoves(game.board, moves);
-        assertEquals(9, moves.size());
-    }
-
-    @Test
-    public void testEvaluateFirstPlayerWin() {
+    public void TestEvaluateFirstPlayerWin() {
         game.symbol = 'X';
         for (int i = 0; i < 3; i++) {
             game.board[i] = game.symbol;
@@ -72,7 +65,22 @@ public class GameTests {
     }
 
     @Test
-    public void testEvaluateSecondPlayerWin() {
+    public void TestCheckStateDraw() {
+        game.symbol = 'X';
+        char[] field = {'X', 'X', 'O', 'O', 'O', 'X', 'O', 'X', 'O'};
+        State state = game.checkState(field);
+        assertEquals(State.DRAW, state);
+    }
+
+    @Test
+    public void TestGenerateMoves() {
+        ArrayList<Integer> moves = new ArrayList<>();
+        game.generateMoves(game.board, moves);
+        assertEquals(9, moves.size());
+    }
+
+    @Test
+    public void TestEvaluateSecondPlayerWin() {
         game.symbol = 'O';
         for (int i = 0; i < 3; i++) {
             game.board[i] = game.symbol;
@@ -85,15 +93,7 @@ public class GameTests {
     }
 
     @Test
-    public void testEvaluatePositionDraw() {
-        game.symbol = 'X';
-        game.board = new char[] {'X', 'X', 'O', 'O', 'O', 'X', 'O', 'X', 'O'};
-        int result = game.evaluatePosition(game.board, game.player1);
-        assertEquals(0, result);
-    }
-
-    @Test
-    public void testMinimax() {
+    public void TestMinimax() {
         game.symbol = 'X';
         game.board = new char[] {'X', ' ', 'O', ' ', ' ', 'X', ' ', 'X', 'O'};
         int move = game.MiniMax(game.board, game.player2);

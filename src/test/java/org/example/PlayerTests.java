@@ -13,7 +13,16 @@ public class PlayerTests {
     }
 
     @Test
-    public void testValues() {
+    public void TestForSymbol() {
+        player.symbol = 'X';
+        assertEquals('X', player.symbol);
+
+        player.symbol = 'O';
+        assertEquals('O', player.symbol);
+    }
+
+    @Test
+    public void TestForValues() {
         assertFalse(player.selected);
         assertFalse(player.win);
         assertEquals(0, player.move);
@@ -24,14 +33,5 @@ public class PlayerTests {
         assertTrue(player.selected);
         assertTrue(player.win);
         assertEquals(5, player.move);
-    }
-
-    @Test
-    public void testSymbol() {
-        player.symbol = 'X';
-        assertEquals('X', player.symbol);
-
-        player.symbol = 'O';
-        assertEquals('O', player.symbol);
     }
 }
