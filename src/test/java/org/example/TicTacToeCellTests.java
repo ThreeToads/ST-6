@@ -15,7 +15,7 @@ public class TicTacToeCellTests {
     }
 
     @Test
-    public void testInitialValues() {
+    public void TestInitialValues() {
         Assertions.assertEquals(' ', cell.getMarker());
         Assertions.assertEquals(0, cell.getNum());
         Assertions.assertEquals(0, cell.getRow());
@@ -23,24 +23,24 @@ public class TicTacToeCellTests {
     }
 
     @Test
-    public void testSetMarker() {
+    public void TestSetMarker() {
         cell.setMarker("X");
         assertEquals('X', cell.getMarker());
         assertFalse(cell.isEnabled());
     }
 
     @Test
-    public void testGetRow() {
+    public void TestGetRow() {
         assertEquals(0, cell.getRow());
     }
 
     @Test
-    public void testGetCol() {
+    public void TestGetCol() {
         assertEquals(0, cell.getCol());
     }
 
     @Test
-    public void testGetNum() {
+    public void TestGetNum() {
         assertEquals(0, cell.getNum());
     }
 }

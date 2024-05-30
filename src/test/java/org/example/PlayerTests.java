@@ -13,7 +13,7 @@ public class PlayerTests {
     }
 
     @Test
-    public void testValues() {
+    public void TestForValues() {
         assertFalse(player.selected);
         assertFalse(player.win);
         assertEquals(0, player.move);
@@ -27,7 +27,7 @@ public class PlayerTests {
     }
 
     @Test
-    public void testSymbol() {
+    public void TestForSymbol() {
         player.symbol = 'X';
         assertEquals('X', player.symbol);
 
